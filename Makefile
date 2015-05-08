@@ -1,4 +1,4 @@
-OBJECTS = bin/splitter.o
+OBJECTS = bin/splitter.o bin/ml.o
 CPPFLAGS = $(shell pkg-config --cflags opencv)
 LDLIBS = $(shell pkg-config --libs opencv)
 .DEFAULT_GOAL = main
