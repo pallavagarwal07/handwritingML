@@ -5,7 +5,7 @@
 using namespace cv;
 using namespace std;
 bool isEmpty(int, Mat, int);
-Mat* split(Mat);
+void multi_split(Mat A, Mat C[100]);
 
 
 #endif

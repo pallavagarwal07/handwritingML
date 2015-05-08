@@ -8,9 +8,8 @@ bool isEmpty(int i, Mat A, int flag);
 Mat trim(Mat);
 Mat make_32_32(Mat);
 
-Mat* split(Mat A)
+void multi_split(Mat A, Mat C[100])
 {
-    static Mat C[100];
     cvtColor(A, A, CV_BGR2GRAY);
     int i=0;
     while(i < A.rows && isEmpty(i, A, 0))
@@ -38,14 +37,12 @@ Mat* split(Mat A)
             roi = trim(roi);
             roi = make_32_32(roi);
             roi.copyTo(C[ctr++]);
+            threshold(C[ctr-1], C[ctr-1], 20, 1, THRESH_BINARY_INV);
         }
     }
 
     C[ctr] = Mat(1,1, CV_8UC1, Scalar(0,0,0));
     printf("%d\n", ctr);
-
-
-    return C;
 }
 
 Mat make_32_32(Mat A)
